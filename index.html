@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快递查询 - 极简查询工具</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-truck"></i>
+                <h1>快递查询</h1>
+            </div>
+            <p class="subtitle">输入单号，自动识别快递公司</p>
+        </header>
+
+        <main class="main-content">
+            <div class="search-card">
+                <div class="search-form">
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <input type="text" id="trackingNumber" placeholder="请输入快递单号" maxlength="50">
+                            <button id="searchBtn" class="search-btn">
+                                <i class="fas fa-search"></i>
+                                查询
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="email-reminder">
+                        <h4>
+                            <i class="fas fa-bell"></i>
+                            到达提醒
+                        </h4>
+                        <div class="email-input-group">
+                            <input type="email" id="emailInput" class="email-input" placeholder="输入邮箱地址" />
+                            <div class="reminder-toggle">
+                                <div class="toggle-switch" id="reminderToggle"></div>
+                                <span>到达本地时提醒</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-header">
+                    <div class="tracking-info">
+                        <div class="tracking-details">
+                            <span class="tracking-number" id="resultTrackingNumber"></span>
+                            <span class="courier-name" id="resultCourierName"></span>
+                        </div>
+                    </div>
+                    <div class="status-badge" id="statusBadge">
+                        <span id="statusText"></span>
+                    </div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline" id="timeline">
+                        <!-- 快递轨迹将在这里动态生成 -->
+                    </div>
+                </div>
+
+                <div class="package-info">
+                    <div class="info-card">
+                        <h4><i class="fas fa-box"></i> 包裹信息</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">收件人：</span>
+                                <span class="value" id="recipientName">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">联系电话：</span>
+                                <span class="value" id="recipientPhone">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">收件地址：</span>
+                                <span class="value" id="recipientAddress">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">包裹重量：</span>
+                                <span class="value" id="packageWeight">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <p>正在查询快递信息...</p>
+            </div>
+
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>查询失败</h3>
+                    <p id="errorMessage">无法获取快递信息，请检查单号是否正确</p>
+                    <button id="retryBtn" class="retry-btn">
+                        <i class="fas fa-redo"></i>
+                        重新查询
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 快递查询. 让查询更简单.</p>
+        </footer>
+    </div>
+
+    <div class="notification" id="notification">
+        <span id="notificationText"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
